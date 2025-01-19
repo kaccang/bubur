@@ -1,0 +1,309 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log",
+    "access": "/var/log/xray/access.log"
+   },
+   "api": {
+    "services": [
+      "HandlerService",
+      "LoggerService",
+      "StatsService"
+     ],
+    "tag": "api"
+    },
+    "stats": {},
+    "policy": {
+    "levels": {
+      "0": {
+        "handshake": 2,
+        "connIdle": 128,
+        "statsUserUplink": true,
+        "statsUserDownlink": true
+        }
+       }
+      },
+      "inbounds": [
+      {
+      "listen": "127.0.0.1",
+      "port": 10000,
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "127.0.0.1"
+      },
+      "tag": "api"
+      },
+      {
+     "listen": "127.0.0.1",
+     "port": "10001",
+     "protocol": "vless",
+      "settings": {
+          "decryption":"none",
+            "clients": [
+               {
+                 "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0"
+#vless
+#& yyuu 2025-01-22
+},{"id": "fbbed3d5-1ffb-4910-b5d0-d658d3bb4869","email": "yyuu"
+             }
+          ]
+       },
+       "streamSettings":{
+         "network": "ws",
+            "wsSettings": {
+                "path": "/vless"
+          }
+        }
+     },
+     {
+     "listen": "127.0.0.1",
+     "port": "10002",
+     "protocol": "vmess",
+      "settings": {
+            "clients": [
+               {
+                 "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0",
+                 "alterId": 0
+#vmess
+### ikan77 2025-01-22
+},{"id": "e9c9e6b7-01d3-408f-a3de-a4f48e82c716","alterId": 0,"email": "ikan77"
+### Aguss0468 2025-01-15
+},{"id": "5cb4fd95-9783-4cda-8230-4d8b26608e71","alterId": 0,"email": "Aguss0468"
+### anak 2025-01-21
+},{"id": "fa90b8ed-3ddd-4edb-96c6-25c428cc25e0","alterId": 0,"email": "anak"
+### hplain7243 2025-01-28
+},{"id": "abf71960-6280-4d36-96f0-8c5e2674ab46","alterId": 0,"email": "hplain7243"
+             }
+          ]
+       },
+       "streamSettings":{
+         "network": "ws",
+            "wsSettings": {
+                "path": "/vmess"
+           }
+         }
+       },
+       {
+      "listen": "127.0.0.1",
+      "port": "10003",
+      "protocol": "trojan",
+      "settings": {
+          "decryption":"none",
+           "clients": [
+              {
+                 "password": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0"
+#trojanws
+#! trojjan 2025-01-22
+},{"password": "3ce2cc9e-1d99-49bb-b9e1-5f305727d714","email": "trojjan"
+#! akumakan 2025-01-22
+},{"password": "5c367107-a668-47c5-92d7-43bd982a3b53","email": "akumakan"
+              }
+          ],
+         "udp": true
+       },
+       "streamSettings":{
+           "network": "ws",
+           "wsSettings": {
+               "path": "/trojan-ws"
+            }
+         }
+     },
+      {
+         "listen": "127.0.0.1",
+        "port": "10004",
+        "protocol": "shadowsocks",
+        "settings": {
+           "clients": [
+           {
+           "method": "aes-128-gcm",
+          "password": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0"
+#ssws
+           }
+          ],
+          "network": "tcp,udp"
+       },
+       "streamSettings":{
+          "network": "ws",
+             "wsSettings": {
+               "path": "/ss-ws"
+           }
+        }
+     },
+      {
+        "listen": "127.0.0.1",
+        "port": "10005",
+        "protocol": "vless",
+        "settings": {
+         "decryption":"none",
+           "clients": [
+             {
+               "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0"
+#vlessgrpc
+#& yyuu 2025-01-22
+},{"id": "fbbed3d5-1ffb-4910-b5d0-d658d3bb4869","email": "yyuu"
+             }
+          ]
+       },
+          "streamSettings":{
+             "network": "grpc",
+             "grpcSettings": {
+                "serviceName": "vless-grpc"
+           }
+        }
+     },
+     {
+      "listen": "127.0.0.1",
+      "port": "10006",
+     "protocol": "vmess",
+      "settings": {
+            "clients": [
+               {
+                 "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0",
+                 "alterId": 0
+#vmessgrpc
+### ikan77 2025-01-22
+},{"id": "e9c9e6b7-01d3-408f-a3de-a4f48e82c716","alterId": 0,"email": "ikan77"
+### Aguss0468 2025-01-15
+},{"id": "5cb4fd95-9783-4cda-8230-4d8b26608e71","alterId": 0,"email": "Aguss0468"
+### anak 2025-01-21
+},{"id": "fa90b8ed-3ddd-4edb-96c6-25c428cc25e0","alterId": 0,"email": "anak"
+### hplain7243 2025-01-28
+},{"id": "abf71960-6280-4d36-96f0-8c5e2674ab46","alterId": 0,"email": "hplain7243"
+             }
+          ]
+       },
+       "streamSettings":{
+         "network": "grpc",
+            "grpcSettings": {
+                "serviceName": "vmess-grpc"
+          }
+        }
+     },
+     {
+        "listen": "127.0.0.1",
+        "port": "10007",
+        "protocol": "trojan",
+        "settings": {
+          "decryption":"none",
+             "clients": [
+               {
+                 "password": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0"
+#trojangrpc
+#! trojjan 2025-01-22
+},{"password": "3ce2cc9e-1d99-49bb-b9e1-5f305727d714","email": "trojjan"
+#! akumakan 2025-01-22
+},{"password": "5c367107-a668-47c5-92d7-43bd982a3b53","email": "akumakan"
+               }
+           ]
+        },
+         "streamSettings":{
+         "network": "grpc",
+           "grpcSettings": {
+               "serviceName": "trojan-grpc"
+         }
+      }
+   },
+   {
+    "listen": "127.0.0.1",
+    "port": "10008",
+    "protocol": "shadowsocks",
+    "settings": {
+        "clients": [
+          {
+             "method": "aes-128-gcm",
+             "password": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0"
+#ssgrpc
+           }
+         ],
+           "network": "tcp,udp"
+      },
+    "streamSettings":{
+     "network": "grpc",
+        "grpcSettings": {
+           "serviceName": "ss-grpc"
+          }
+       }
+    }
+  ],
+  "outbounds": [
+  {
+    "protocol": "wireguard",
+    "settings": {
+      "secretKey": "QFZkeZYuai04KIJuM9gxt1+hYxcTCBzubAtetpn6am8=",
+      "address": [
+        "172.16.0.2/32",
+        "fd01:5ca1:ab1e:815a:634d:1529:f7a0:8f32/128"
+      ],
+      "peers": [
+        {
+          "publicKey": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+          "allowedIPs": [
+            "0.0.0.0/0",
+            "::/0"
+          ],
+          "endpoint": "engage.cloudflareclient.com:2408"
+        }
+      ],
+      "dns": [
+        "1.1.1.1",
+        "1.0.0.1"
+      ],
+      "mtu": 1280,
+      "domainStrategy": "ForceIPv4v6"
+    },
+    "tag": "WARP"
+  },
+  {
+    "protocol": "freedom",
+    "settings": {
+      "domainStrategy": "UseIP"
+    },
+    "tag": "direct"
+    }
+  ],
+  "routing": {
+  "domainStrategy": "IPIfNonMatch",
+  "rules": [
+    {
+      "type": "field",
+      "domain": [
+        "geosite:5ch",
+        "geosite:3dm"
+      ],
+      "outboundTag": "WARP"
+    },
+    {
+      "type": "field",
+      "network": "tcp,udp",
+      "outboundTag": "direct"
+      }
+    ]
+  },
+  "stats": {},
+  "api": {
+    "services": [
+      "StatsService"
+    ],
+    "tag": "api"
+  },
+  "policy": {
+    "levels": {
+      "0": {
+        "statsUserDownlink": true,
+        "statsUserUplink": true
+      }
+    },
+    "system": {
+      "statsInboundUplink": true,
+      "statsInboundDownlink": true,
+      "statsOutboundUplink": true,
+      "statsOutboundDownlink": true
+    }
+  },
+  "dns": {
+    "servers": [
+      "https://1.1.1.1/dns-query"
+    ],
+    "queryStrategy": "UseIP"
+  }
+}
